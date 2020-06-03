@@ -1,0 +1,28 @@
+main: at.haha007.teamcommands.TeamCommands
+version: 1.0
+api-version: 1.15
+name: TeamCommands
+author: Haha007
+commands:
+  freeze:
+    description: freeze world changes
+    usage: /<command> <args>
+    permission: teamcommands.freeze.command
+    permission-message: §cDu hast keine ausreichenden Rechte um diesen Command zu benutzen.
+    default: op
+  teamchat:
+    description: Serverteam chat
+    usage: /<command> <args>
+    aliases:
+    - team
+    permission: teamcommands.teamchat
+    permission-message: §cDu hast keine ausreichenden Rechte um diesen Command zu benutzen.
+    default: op
+  edititem:
+    description: Item name and lore
+    usage: /<command> <args>
+    aliases:
+    - ei
+    permission: teamcommands.edititem
+    permission-message: §cDu hast keine ausreichenden Rechte um diesen Command zu benutzen.
+    default: op
