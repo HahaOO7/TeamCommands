@@ -44,7 +44,7 @@ public class CE_Freeze implements CommandExecutor, Listener {
 	void onBlockPlace(BlockPlaceEvent event) {
 		if (!active)
 			return;
-		if (event.getPlayer().hasPermission("eden.edenbugfixes.freeze.bypass"))
+		if (event.getPlayer().hasPermission("teamcommands.freeze.bypass"))
 			return;
 		event.setCancelled(true);
 	}

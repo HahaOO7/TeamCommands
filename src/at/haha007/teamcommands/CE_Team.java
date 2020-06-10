@@ -7,6 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 public class CE_Team implements CommandExecutor {
 	public CE_Team(JavaPlugin plugin) {
@@ -14,7 +15,7 @@ public class CE_Team implements CommandExecutor {
 	}
 
 	@Override
-	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
 
 		if (args.length < 1) {
 			sender.sendMessage(ChatColor.GOLD + "/team message");
@@ -25,21 +26,21 @@ public class CE_Team implements CommandExecutor {
 		if (sender instanceof Player)
 			name = ((Player) sender).getDisplayName();
 
-		String message = combineStrings(0, args.length - 1, args);
+		String message = combineStrings(args);
 		Bukkit.broadcast(ChatColor.DARK_PURPLE + "[" + ChatColor.LIGHT_PURPLE + "TeamChat" + ChatColor.DARK_PURPLE
-				+ "] " + name + " " + message, "teamcommands.teamchat");
+			+ "] " + name + " " + message, "teamcommands.teamchat");
 		return true;
 	}
 
-	private String combineStrings(int startIndex, int endIndex, String... strings) {
-		String string = "";
+	private String combineStrings(String... strings) {
+		StringBuilder string = new StringBuilder();
 		try {
-			for (int i = startIndex; i <= endIndex; i++) {
-				string += " " + strings[i];
+			for (int i = 0; i <= string.length() - 1; i++) {
+				string.append(" ").append(strings[i]);
 			}
-		} catch (IndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException ignored) {
 		}
 
-		return string.replaceFirst(" ", "");
+		return string.toString().replaceFirst(" ", "");
 	}
 }
